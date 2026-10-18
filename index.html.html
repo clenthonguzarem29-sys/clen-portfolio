@@ -1,0 +1,818 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>𝘊𝘭𝘦𝘯 𝘎𝘶𝘻𝘢𝘳𝘦𝘮</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="3fc74f1a-3164-80f0-bebe-ebea611d814f" class="page serif"><header><img class="page-cover-image" src="clen_guzarem_cover.png" style="object-position:center 50%"/><h1 class="page-title" dir="auto">𝘊𝘭𝘦𝘯 𝘎𝘶𝘻𝘢𝘳𝘦𝘮</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="57118e94-71ea-40dc-8f54-ee3fda5b4bc4" class="column-list" data-notion-column-list="" dir="auto"><div id="f7d9c2fa-209b-41a1-968b-d4c05dba347c" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="👤" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="e12596f5-c857-41a4-b692-bf78bfc1181e" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="👤"></span></div><div style="width:100%"><figure id="3fc74f1a-3164-80c3-a22d-c29b5b5e1fcd" class="image" data-notion-image="1057fd0a-db69-407a-98f2-17fb307e726f.jpg" dir="ltr"><a href="1057fd0a-db69-407a-98f2-17fb307e726f.jpg"><img style="width:229.73523421588595px" src="1057fd0a-db69-407a-98f2-17fb307e726f.jpg"/></a></figure><h4 id="96498f07-0aa0-4230-9fac-294e8c5a9eac" class="" dir="auto"><em><mark class="highlight-default" data-notion-highlight="default"> Marketing VA · SEO · Lead Generation &amp; Conversion Strategist</mark></em></h4></div></aside><p id="3fd74f1a-3164-8021-9fc6-fc29ed706b4b" class="" dir="auto">I&#x27;m a digital marketing VA and SEO and performance marketing operator. I run paid search and paid social, improve organic visibility, set up GA4 and GTM tracking, and build lead-generation systems that attract, nurture and convert.</p><p id="e537f1ce-52cd-42ae-abea-84ce5bc693f6" class="" dir="auto"><strong>What makes me different?</strong> I don&#x27;t just post content or run ads. I focus on the customer journey, messaging and conversion, so every strategy moves people from awareness → interest → action.</p><p id="3fd74f1a-3164-8071-a320-e6eeb02bc3a8" class="" dir="auto">
+</p><aside class="block-color-blue_background callout" data-notion-callout="" data-notion-callout-icon="📅" data-notion-callout-background="blue_background" style="white-space:pre-wrap;display:flex" id="5db88625-7618-4222-b8af-a62152621fe0" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="📅"></span></div><div style="width:100%"><p id="f858b88e-2d61-4982-ac25-1301de7f0d4c" class="" dir="auto"><a href="mailto:clenthonguzarem29@gmail.com?subject=Intro%20call">Request an intro call</a></p></div></aside><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="📍" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="b600858a-c277-4529-945f-cc3c66bc4b3f" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="📍"></span></div><div style="width:100%"><p id="df9644eb-f391-4654-b777-580d37f687db" class="" dir="auto">Santander, Cebu · Philippine Time (UTC+8)</p></div></aside><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="✉️" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="e077e257-ebde-430b-b270-76fd58e32959" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="✉️"></span></div><div style="width:100%"><p id="15883394-864b-4032-a9f3-e09d2736f6b9" class="" dir="auto"><a href="mailto:clenthonguzarem29@gmail.com">Email</a></p></div></aside><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="💬" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="4e356da7-8b6d-4581-9d80-a07cbf21035d" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="💬"></span></div><div style="width:100%"><p id="8fc1e83b-dfa1-4168-87a7-2a28e6662e91" class="" dir="auto"><a href="https://wa.me/639368447153">WhatsApp</a></p></div></aside><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="💼" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="a01225b9-2f1c-4a66-a064-643e780f93ab" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="💼"></span></div><div style="width:100%"><p id="a646e0f9-3fe6-4494-9259-b92afd6bbe77" class="" dir="auto"><a href="https://www.linkedin.com/in/clen-thon-guzarem-9a2ab6338">LinkedI</a></p></div></aside><figure id="3fc74f1a-3164-80aa-a04b-d090aa27fc6c" dir="ltr"><a href="https://www.facebook.com/clenguzarem.va" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Clen Guzarem Marketing VA: SEO, Paid Ads &amp; Landing Pages</div><div class="bookmark-description">Clen Guzarem Marketing VA: SEO, Paid Ads &amp; Landing Pages, Santander. 774 followers · 22 talking about this. Virtual marketing assistant | SEO &amp; paid media | GA4 &amp; GTM | GoHighLevel landing pages</div></div><div class="bookmark-href"><img src="https://static.xx.fbcdn.net/rsrc.php/y1/r/ay1hV6OlegS.ico" class="icon bookmark-icon"/>https://www.facebook.com/clenguzarem.va</div></div><img src="https://scontent-iad3-2.xx.fbcdn.net/v/t39.30808-1/847908251_122217177074475165_8805367248428950152_n.jpg?stp=dst-jpg_tt6&amp;cstp=mx800x800&amp;ctp=s720x720&amp;_nc_cat=111&amp;ccb=1-7&amp;_nc_sid=3ab345&amp;_nc_ohc=GS58kdF0w6UQ7kNvwH2vq_e&amp;_nc_oc=Ado8I9KG0kgQHwHAQWXi35fIfqTrckOtuYxUU-MZoUhyjxvUMmu8kho0r_i-CmSdUVSSGc__e_R7JK2uiQY2hT3X&amp;_nc_zt=24&amp;_nc_ht=scontent-iad3-2.xx&amp;_nc_gid=Wx3bdvrd0K0vkhR3uWqDFw&amp;_nc_ss=7c20f&amp;oh=00_AQOrpfluTdKu5epUmFdwvwbBJxuZWy6oc97sFyxelFn0vg&amp;oe=6AD9BB4E" class="bookmark-image"/></a></figure></div><div id="0fe02dd6-fcbd-4f8b-a9b9-fe0b18375ac1" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="🎯" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="1d71794c-134b-473c-8cc3-6c75b9440571" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="🎯"></span></div><div style="width:100%"><h2 id="ae572e80-e17d-4d18-9863-f57d39ac7a76" class="" dir="auto"><strong>Traffic that converts, at $0.40 a click or less.</strong></h2></div></aside><hr id="815019b0-7e15-4d67-8b7b-0a18f658cbcb" dir="auto"/><h2 id="b8b055b3-fd79-407e-acb5-4498a4233fd9" class="" dir="auto"><strong>How I turn traffic into leads!</strong></h2><div id="3fc74f1a-3164-80fa-a77c-e755f755b8c8" class="column-list" data-notion-column-list="" dir="auto"><div id="3fc74f1a-3164-80f6-ba34-cbb194ad146e" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><h3 id="3fc74f1a-3164-80da-bcb2-e2e4dea30e9b" class="block-color-blue_background" data-notion-highlight="blue_background" dir="auto">Attract</h3><p id="3fc74f1a-3164-805e-a1ee-dd77358f55cf" class="" dir="auto">SEO and paid ads bring in people who are already searching for what you sell.</p></div><div id="3fc74f1a-3164-804a-a4f8-fe97fa999806" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><h3 id="3fc74f1a-3164-80d3-b0c9-d9d1a749a5ab" class="block-color-blue_background" data-notion-highlight="blue_background" dir="auto">Nurture</h3><p id="3fc74f1a-3164-80a8-a366-f66b6b70479f" class="" dir="auto">Lead magnets, email sequences, and social content keep them interested.</p></div><div id="3fc74f1a-3164-80d4-a3cf-fea775307ddb" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><h3 id="3fc74f1a-3164-80c9-b55d-e5dc4abb86e8" class="block-color-blue_background" data-notion-highlight="blue_background" dir="auto">Convert</h3><p id="3fc74f1a-3164-80d9-903c-db2a52f662e5" class="" dir="auto">Landing pages and clean tracking turn visits into leads, and show which channel earned them.</p></div></div><hr id="3fc74f1a-3164-80c6-8256-df7fe0743e10" dir="auto"/><div id="9fd08e97-0bcc-4204-9b3c-6b50e1f493a1" class="column-list" data-notion-column-list="" dir="auto"><div id="219157a9-4ec3-4a49-9775-b244ac5e6ad7" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="2a535feb-044b-48b2-bd65-75708e4eca87" dir="ltr"><div style="font-size:1.5em"><img class="icon" src="google-search-console-logo-icon-hd_(1).webp"/></div><div style="width:100%"><h4 id="4546bcce-87d0-40e4-97c8-d9590a51d0f8" class="" dir="auto">Cross Platform Budget Oversight System</h4></div></aside><figure id="3fc74f1a-3164-805b-9a2c-e80665a0daf4" class="image" data-notion-image="image.png" dir="ltr"><a href="image.png"><img style="width:1380px" src="image.png"/></a></figure></div><div id="51e64053-788a-4dc6-8fd1-315ab0b70d7a" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="📈" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="d6842bb5-ef8d-4b01-92ac-380294f7f416" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="📈"></span></div><div style="width:100%"><h4 id="335c770b-8767-41cc-9f3f-1378c376217d" class="" dir="auto">GA4 Performance Analytics &amp; Overview</h4></div></aside><figure id="3fc74f1a-3164-807e-ac06-fdbc3b66cd8d" class="image" data-notion-image="d9a2ab46-91f1-424f-8182-94073bbc55a5.png" dir="ltr"><a href="d9a2ab46-91f1-424f-8182-94073bbc55a5.png"><img style="width:478.8530465949821px" src="d9a2ab46-91f1-424f-8182-94073bbc55a5.png"/></a></figure></div></div><div id="b0f4cdbf-9469-4077-86ee-d42aa9a904f2" class="column-list" data-notion-column-list="" dir="auto"><div id="d97c8fb8-7fb0-4721-990a-fbc0f084e30b" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="f3b289a3-de24-4753-8aed-81a169f14f61" dir="ltr"><div style="font-size:1.5em"><img class="icon" src="google-search-console-logo-icon-hd_(1)%201.webp"/></div><div style="width:100%"><h3 id="b8fa0113-23a4-4a43-ae12-f1e53e9b2049" class="" dir="auto">Campaign Overview</h3></div></aside><figure id="3fc74f1a-3164-806e-b64e-f2cf219434f5" class="image" data-notion-image="5924e20c-dccc-4066-9489-4c0db0e2d1d2_(1).jpg" dir="ltr"><a href="5924e20c-dccc-4066-9489-4c0db0e2d1d2_(1).jpg"><img style="width:2048px" src="5924e20c-dccc-4066-9489-4c0db0e2d1d2_(1).jpg"/></a></figure></div><div id="95c091f3-7360-47fb-8951-e8984471ecc5" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="22059f25-0121-4e38-a2e3-37d638d1a48c" dir="ltr"><div style="font-size:1.5em"><img class="icon" src="images_(2).jpg"/></div><div style="width:100%"><h3 id="c382e0a0-006b-45e2-9a00-c017e8d1da5b" class="" dir="auto">Shopify Analytics Overview</h3></div></aside><figure id="3fc74f1a-3164-80ac-8c71-e5bb95cd2a5a" class="image" data-notion-image="49160732-a1f9-4da8-b409-060e0bdf08cc.png" dir="ltr"><a href="49160732-a1f9-4da8-b409-060e0bdf08cc.png"><img style="width:670.4928806133624px" src="49160732-a1f9-4da8-b409-060e0bdf08cc.png"/></a></figure></div></div><h2 id="a6ede0fe-168c-4892-a8d8-317ff0ea51c3" class="" dir="auto">What I can take off your plate</h2><div id="6fbf0d53-3b01-4ebd-8ce7-e72cf4c47a4e" class="column-list" data-notion-column-list="" dir="auto"><div id="4d56ca27-79a0-4602-949b-beb1348efab9" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="🎯" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="bc504265-a9de-4936-bf42-7a0dfe7bca73" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="🎯"></span></div><div style="width:100%"><p id="1a2b2113-503b-42e0-b411-cc71492c722b" class="" dir="auto"><strong>Paid ads</strong></p><p id="faec9778-c822-4c02-9d46-d177b0b77d6d" class="" dir="auto">Search and Shopping on Google, Microsoft and Amazon, plus Meta and TikTok. Budget control, search-term clean-up, weekly optimization.</p></div></aside><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="📡" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="2111b1fe-abe8-4f5f-b935-538cca659664" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="📡"></span></div><div style="width:100%"><p id="211e7e8f-c5c7-44ea-8575-a3fe18c4a07b" class="" dir="auto"><strong>Tracking &amp; reporting</strong></p><p id="7a6ac6ea-a3d1-46d0-a281-500df41eca14" class="" dir="auto">GA4 and GTM setup, cross-domain tracking, attribution checks, Looker Studio dashboards.</p></div></aside></div><div id="6bb4d51a-6e70-43b1-bdf8-fb9329a71a0e" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="🔍" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="dfbc0f02-b603-4711-b646-5af3f2be037e" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="🔍"></span></div><div style="width:100%"><p id="d9fc8629-05a9-407b-9d4d-3b3d0cd32555" class="" dir="auto"><strong>SEO</strong></p><p id="0377764e-15d0-4593-b216-fdb44ddae4fc" class="" dir="auto">Keyword and intent research, on-page rewrites, technical fixes (indexing, sitemaps, crawl issues), Search Console reporting.</p></div></aside><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="🧲" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="9a90fe8b-51bc-4d58-92c5-bc0546ac3d53" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="🧲"></span></div><div style="width:100%"><p id="4496b611-2ffb-46ef-9a71-674cff1da49a" class="" dir="auto"><strong>Lead generation</strong></p><p id="7884e2e8-6829-4972-8ce4-1c80e3f06757" class="" dir="auto">Lead magnets and landing pages built in GoHighLevel, email follow-up, social media management.</p></div></aside></div></div></div></div><hr id="3fc74f1a-3164-8054-820f-c882e9071a45" dir="auto"/><h1 id="3fc74f1a-3164-8018-98aa-eb28a38a80b3" class="" dir="auto">Selected work</h1><div id="3fc74f1a-3164-8003-ad4d-cc5086b0cc5b" class="column-list" data-notion-column-list="" dir="auto"><div id="3fc74f1a-3164-80b3-8459-d47c7d1b1017" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><p id="3fc74f1a-3164-80e1-ad41-dd7aaf43d681" class="block-color-blue_background" data-notion-highlight="blue_background" dir="auto"><strong>Organic search growth</strong></p><p id="3fc74f1a-3164-8065-b56f-ea3bec9cc0a0" class="" dir="auto"><strong>Goal:</strong> Visibility for searches from people ready to buy.</p><p id="3fc74f1a-3164-8093-9db4-d0cc6e74840d" class="" dir="auto"><strong>What I did:</strong> Keyword and intent research, rewritten titles, metas and content, fixes for indexing, sitemap and crawl issues.</p><p id="3fc74f1a-3164-80b4-aeb5-cad60d14eeca" class="" dir="auto"><strong>Result:</strong> 47K+ organic impressions in Google Search Console.</p></div><div id="3fc74f1a-3164-80cf-aee8-f8d69ef3db13" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><p id="3fc74f1a-3164-8068-88df-c36ac7efbcd0" class="block-color-blue_background" data-notion-highlight="blue_background" dir="auto"><strong>Tracking across several domains</strong></p><p id="3fc74f1a-3164-804b-a4e2-cc188e8834fa" class="" dir="auto"><strong>Goal:</strong> Count every conversion once and credit it to the right channel.</p><p id="3fc74f1a-3164-8093-a8a7-d0a3714b93f3" class="" dir="auto"><strong>What I did:</strong> Full-funnel GTM and GA4 tracking with cross-domain and multi-channel attribution, reported in Looker Studio.</p><p id="3fc74f1a-3164-8060-8553-f1e701f73b83" class="" dir="auto"><strong>Result:</strong> Cleaner conversion data behind 20K+ sessions, so budget decisions were easier to defend.</p></div><div id="3fc74f1a-3164-8090-96f8-d6c5042d602e" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><p id="3fc74f1a-3164-804f-bc95-c8c566f0f9f3" class="block-color-blue_background" data-notion-highlight="blue_background" dir="auto"><strong>Paid search with a cost ceiling</strong></p><p id="3fc74f1a-3164-80e9-ab10-c69d44096c6c" class="" dir="auto"><strong>Goal:</strong> Grow high-intent traffic across five ad platforms without CPC creeping up.</p><p id="3fc74f1a-3164-801a-b1e5-f482845efa3c" class="" dir="auto"><strong>What I did:</strong> Structured Search and Shopping campaigns, filtered search terms, built negative keyword lists, tightened match types.</p><p id="3fc74f1a-3164-8090-8083-d1ff8d0127a1" class="" dir="auto"><strong>Result:</strong> CPC at or below A$0.40, 200K+ monthly impressions, 25–40% less wasted spend.</p></div><div id="3fc74f1a-3164-80f6-b134-f72860aa737a" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><h4 id="3fc74f1a-3164-8038-933d-d4efad305735" class="block-color-blue_background" data-notion-highlight="blue_background" dir="auto">Building a Lead Generation System</h4><ol type="1" id="3fc74f1a-3164-8094-908a-f1425df18723" class="numbered-list" start="1" dir="auto"><li>A lead magnet (checklist or guide) matched to the target audience.</li></ol><ol type="1" id="3fc74f1a-3164-80fc-ab27-f0cea6bd4e0b" class="numbered-list" start="2" dir="auto"><li>A landing page with one clear call to action.</li></ol><ol type="1" id="3fc74f1a-3164-8020-bdcb-f4022537362f" class="numbered-list" start="3" dir="auto"><li>Lead capture forms connected to the email platform.</li></ol><ol type="1" id="3fc74f1a-3164-805c-b363-ff15b955b2ed" class="numbered-list" start="4" dir="auto"><li>Email automation: welcome sequence and follow-ups.</li></ol><ol type="1" id="3fc74f1a-3164-8069-8bb3-d3ea813712a4" class="numbered-list" start="5" dir="auto"><li>Traffic from social content and paid ads.</li></ol><ol type="1" id="3fc74f1a-3164-80e3-b6aa-d8bed7ec2ddf" class="numbered-list" start="6" dir="auto"><li>Funnel optimization to lift conversion rates</li></ol></div></div><hr id="3fc74f1a-3164-8066-b232-e2f7e4eda993" dir="auto"/><figure id="3fc74f1a-3164-807e-bb9f-f21da6aed77d" dir="ltr"><div class="source"><a href="https://app.notion.comundefined"></a></div></figure><h1 id="3fc74f1a-3164-80fb-a1af-c816a92ba73f" class="" dir="auto">Dashboards &amp; reports</h1><p id="1649b24f-9832-4c0f-971b-979b38af2b88" class="" dir="auto"><em>Reporting built for campaign reviews.</em></p><div id="3fc74f1a-3164-80e8-9291-fcbff6bb3eaf" class="column-list" data-notion-column-list="" dir="auto"><div id="3fc74f1a-3164-80d2-99cb-fb9183c4065a" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><div id="3fc74f1a-3164-807b-9589-eabd3c88f0e0" class="collection-content" dir="ltr"><h4 class="collection-title"></h4><div class="collection-content-wrapper"><table class="collection-content"><colgroup><col style="width:100%"/></colgroup><thead><tr><th><span class="icon property-icon"><img src="https://app.notion.com/icons/font_gray.svg" style="width:14px;height:14px;display:block"/></span>Event name</th></tr></thead><tbody><tr id="d3474f1a-3164-829a-a74a-018455e7131a"><td class="cell-title"><a href="GA4%20-%20User%20Experience%20&amp;%20Engagement%20Overview%20d3474f1a3164829aa74a018455e7131a.html" data-notion-page-id="d3474f1a-3164-829a-a74a-018455e7131a" data-notion-space-id="18d74f1a-3164-81fd-9430-00036aee089e"><img class="icon" src="Download-the-GA4-Logo.png"/>GA4 - User Experience &amp; Engagement Overview</a></td></tr><tr id="19974f1a-3164-838b-bd21-011c4d2955e6"><td class="cell-title"><a href="GSC%20-%20SEO%20Performance%20Dashboard%2019974f1a3164838bbd21011c4d2955e6.html" data-notion-page-id="19974f1a-3164-838b-bd21-011c4d2955e6" data-notion-space-id="18d74f1a-3164-81fd-9430-00036aee089e"><img class="icon" src="google-search-console-logo-icon-hd.webp"/>GSC - SEO Performance Dashboard</a></td></tr><tr id="3fc74f1a-3164-80db-a0ba-f3009de2bf6d"><td class="cell-title"><a href="GSC%20-%20SEO%20Overview%203fc74f1a316480dba0baf3009de2bf6d.html" data-notion-page-id="3fc74f1a-3164-80db-a0ba-f3009de2bf6d" data-notion-space-id="18d74f1a-3164-81fd-9430-00036aee089e"><img class="icon" src="google-search-console-logo-icon-hd.webp"/>GSC - SEO Overview</a></td></tr></tbody></table></div><br/><br/></div></div><div id="3fc74f1a-3164-808f-a63b-dd73e7aeef57" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><div id="3fc74f1a-3164-800a-87c0-c518440e124f" class="collection-content" dir="ltr"><h4 class="collection-title"></h4><div class="collection-content-wrapper"><table class="collection-content"><colgroup><col style="width:100%"/></colgroup><thead><tr><th><span class="icon property-icon"><img src="https://app.notion.com/icons/font_gray.svg" style="width:14px;height:14px;display:block"/></span>Event name</th></tr></thead><tbody><tr id="3fc74f1a-3164-80bb-bf91-efb549ac8e68"><td class="cell-title"><a href="Executive%20Overview%20-%20High%20Level%20KPIs%203fc74f1a316480bbbf91efb549ac8e68.html" data-notion-page-id="3fc74f1a-3164-80bb-bf91-efb549ac8e68" data-notion-space-id="18d74f1a-3164-81fd-9430-00036aee089e"><img class="icon" src="Download-the-GA4-Logo%201.png"/>Executive Overview - High Level KPIs</a></td></tr><tr id="3fc74f1a-3164-80d8-b71b-e6e947ae46e6"><td class="cell-title"><a href="BING%20Ads%20Performance%20Overview%203fc74f1a316480d8b71be6e947ae46e6.html" data-notion-page-id="3fc74f1a-3164-80d8-b71b-e6e947ae46e6" data-notion-space-id="18d74f1a-3164-81fd-9430-00036aee089e"><img class="icon" src="ms_bingo.png"/>BING Ads Performance Overview</a></td></tr><tr id="3fc74f1a-3164-8071-9369-c9f77ac8e711"><td class="cell-title"><a href="Google%20Ads%20Performance%20Analysis%203fc74f1a316480719369c9f77ac8e711.html" data-notion-page-id="3fc74f1a-3164-8071-9369-c9f77ac8e711" data-notion-space-id="18d74f1a-3164-81fd-9430-00036aee089e"><img class="icon" src="google-ads-logo-vector-115738525038dma6lhprs.png"/>Google Ads Performance Analysis</a></td></tr></tbody></table></div><br/><br/></div></div></div><h2 id="3fc74f1a-3164-800d-8270-fd0ea3017ec2" class="" dir="auto"><em><strong>Sample Landing Page and Lead Magnet with GoHighLevel</strong></em></h2><div id="3fc74f1a-3164-8024-9892-dee857213fe9" class="column-list" data-notion-column-list="" dir="auto"><div id="3fc74f1a-3164-808e-829a-e1b700778439" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><figure id="3fc74f1a-3164-801b-b72f-e5a3e35f20d1" dir="ltr"><div class="source"><a href="https://sites.leadconnectorhq.com/preview/iLmygHKXAaZwS3NHwWQv?notrack=true">https://sites.leadconnectorhq.com/preview/iLmygHKXAaZwS3NHwWQv?notrack=true</a></div></figure><p id="3fc74f1a-3164-8068-a02b-ec43a6cccd33" class="" dir="auto">
+</p></div><div id="3fc74f1a-3164-802f-956f-da264aa2fe74" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><figure id="3fc74f1a-3164-80af-98f9-f9daed5ad234" dir="ltr"><div class="source"><a href="https://sites.leadconnectorhq.com/preview/Z93RT2A52FNoAw6d2VcS?notrack=true">https://sites.leadconnectorhq.com/preview/Z93RT2A52FNoAw6d2VcS?notrack=true</a></div></figure></div></div><hr id="3fc74f1a-3164-80c2-bd71-ec079516bc82" dir="auto"/><h1 id="dfdbf8d9-18c3-4038-9e77-75a05a346d21" class="" dir="auto">Professional Experience</h1><div id="6d53ff5b-db26-4ddc-b670-5c5751c582c2" class="column-list" data-notion-column-list="" dir="auto"><div id="9c782dd6-5e50-4220-bc86-127e4bc309ad" style="width:14.000000000000002%" class="column" data-notion-column-ratio="0.14" dir="auto"><figure id="90574f1a-3164-821e-8b33-8133d4cb02b1" class="image" data-notion-image="logo.png" dir="ltr"><a href="logo.png"><img style="width:336px" src="logo.png"/></a></figure></div><div id="e472908e-3b03-421a-8974-717f73767150" style="width:86%" class="column" data-notion-column-ratio="0.86" dir="auto"><h3 id="bd8d1223-d0ee-4163-a4ff-e8509ae1e75f" class="" dir="auto">SEO &amp; Paid Campaign Manager, HEQS International</h3><p id="8beada21-45cf-4a7f-a2bf-d8dd7b5a8f59" class="" dir="auto"><em>Nov 2025 – Aug 2026 · Multi-platform paid media and SEO</em></p><ul id="c465ef3a-2958-4be4-9bf4-3381128601df" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Managed and optimized campaigns across Google Ads, Meta Ads, TikTok Ads and Microsoft Ads, focused on cost efficiency and high-intent traffic.</li></ul><ul id="fe070a4d-2d60-4f0a-838e-74186db75c0a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Held CPC at or below about A$0.40 through keyword filtering, bid control and search-term pruning.</li></ul><ul id="066a5821-567b-41e2-be63-9feba2861151" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Restructured campaigns with exact and phrase match segmentation to raise traffic quality and conversion intent.</li></ul><ul id="a5daf824-b370-4fe0-8ca8-2468cba9d89f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Cut wasted spend by continuously removing low-converting queries and irrelevant placements.</li></ul><ul id="07ac3e52-2f2a-42c5-b731-87cb792babeb" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Built and optimized full-funnel tracking with GA4 and GTM, including conversion tracking across Shopify and custom websites.</li></ul><ul id="bc4ad2ad-e4e6-4572-bf7a-5ad224508892" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Built Looker Studio reports and kept testing creatives, audiences and bidding to improve CTR and CVR.</li></ul></div></div><div id="f8bcbe7b-313a-45c7-9386-6cf7646aa60e" class="column-list" data-notion-column-list="" dir="auto"><div id="de4a10ee-1bb3-497f-aa51-7f9ff34ad779" style="width:14.000000000000002%" class="column" data-notion-column-ratio="0.14" dir="auto"><figure id="1c574f1a-3164-821d-8838-81e5a96c7673" class="image" data-notion-image="images__3_-removebg-preview.png" dir="ltr"><a href="images__3_-removebg-preview.png"><img style="width:144px" src="images__3_-removebg-preview.png"/></a></figure></div><div id="c910214b-3fb8-4aec-9ad9-e568fe90761b" style="width:86%" class="column" data-notion-column-ratio="0.86" dir="auto"><h3 id="508f2494-6ea2-4079-ab2d-f07ea153d2f3" class="" dir="auto">Digital Marketing Virtual Assistant, Outsourced Doers / Doneverse</h3><p id="77c68588-a362-4b88-96c6-94ef92653c9b" class="" dir="auto"><em>Feb 2025 – Jul 2025 · Remote, AU-based clients</em></p><ul id="7638d3ca-3128-48b2-b18b-8808ec52d168" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Supported multi-channel campaigns across Meta Ads, email marketing and funnel systems.</li></ul><ul id="53b48da3-265f-4dbf-9b58-805d84d77ad2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Helped build and optimize lead-generation funnels: landing pages, opt-ins and email sequences.</li></ul><ul id="eb9f1dcd-715b-464c-b4d6-a466b2642e8c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Managed email workflows (automation, segmentation, broadcasts) for engagement and lead nurturing.</li></ul><ul id="c29ac469-ae6c-4e3f-9009-fff41103edd0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Handled content scheduling and social media management.</li></ul><ul id="e4a4211e-1418-4655-a7b2-18de3eb86416" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Supported tracking and pixel implementation and flagged optimization opportunities for CTR, CPC and conversions.</li></ul></div></div><div id="10a96fc9-c207-4cb9-a503-c7d1435cf6b6" class="column-list" data-notion-column-list="" dir="auto"><div id="8d312510-8bec-4e6b-8c43-c7a2c07e3c2c" style="width:14.000000000000002%" class="column" data-notion-column-ratio="0.14" dir="auto"><figure id="da874f1a-3164-8278-ba43-81039652a75c" class="image" data-notion-image="images_(1).png" dir="ltr"><a href="images_(1).png"><img style="width:144px" src="images_(1).png"/></a></figure></div><div id="05845fb1-1ee2-4362-9722-0072e29845b9" style="width:86%" class="column" data-notion-column-ratio="0.86" dir="auto"><h3 id="7433986a-c743-4075-9381-120dc5652c10" class="" dir="auto">Records Retrieval Specialist, Peak Outsourcing Dumaguete</h3><p id="8af9b2b4-768e-42c0-9981-d8b9b0c5e2e4" class="" dir="auto"><em>Feb 2024 – Aug 2024 · Outbound operations</em></p><ul id="a426998e-b39b-4703-baf1-cedff2b0475c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Ran high-volume outbound work (80–120 calls a day) that demanded accuracy, compliance and follow-through.</li></ul><ul id="107bff24-94f7-48f1-bcdc-316a324a5391" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Strengthened objection handling and conversion-focused communication, which carries straight into ad copy and funnel work.</li></ul><ul id="7f7f9f83-b398-418b-b895-8ded06665a7e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Kept structured data handling and documentation, and delivered against KPIs in a metrics-based environment.</li></ul></div></div><div id="80a4b698-4d1f-466f-a202-78b65a9e5f0f" class="column-list" data-notion-column-list="" dir="auto"><div id="a383e4ba-e4e0-494e-9981-49375e896a96" style="width:14.000000000000002%" class="column" data-notion-column-ratio="0.14" dir="auto"><figure id="a6d74f1a-3164-83df-a2a6-013584317e33" class="image" data-notion-image="images_(2).png" dir="ltr"><a href="images_(2).png"><img style="width:144px" src="images_(2).png"/></a></figure><p id="3fc74f1a-3164-802e-8df4-fc0fbea45878" class="" dir="auto">
+</p><p id="3fc74f1a-3164-800d-8158-c0f79c25098c" class="" dir="auto">
+</p><p id="3fc74f1a-3164-8074-b4f7-f52ce9c46e8a" class="" dir="auto">
+</p><figure id="3fc74f1a-3164-80d7-8785-da7f35bf1991" class="image" data-notion-image="image%201.png" dir="ltr"><a href="image%201.png"><img style="width:1552px" src="image%201.png"/></a></figure><p id="3fd74f1a-3164-80b4-886d-dc76936e735b" class="" dir="auto">
+</p></div><div id="a7301066-40ae-4aed-ad09-60bfb9bf1385" style="width:86%" class="column" data-notion-column-ratio="0.86" dir="auto"><h3 id="1f6ceb9f-c586-4ed4-a05f-5a6ede728c17" class="" dir="auto">Executive Admin Assistant / Appointment Setter / Bookkeeper, Whale Shark Travel Services</h3><p id="83e410b5-3a9c-4be6-89ca-64d662bb4d79" class="" dir="auto"><em>Dec 2018 – Feb 2020</em></p><ul id="f401e123-62f7-4053-bca5-9fa462b35da4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Managed client bookings, scheduling and appointment coordination.</li></ul><ul id="23a29948-026b-47c9-a805-df33c544afe4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Handled basic bookkeeping and financial tracking.</li></ul><ul id="9ba4d656-ddd0-4a67-be2e-44d764bce681" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Acted as the front-line conversion touchpoint, turning inquiries into confirmed bookings.</li></ul><ul id="5d5cfe97-c8a6-4325-b5a1-c2f3642470ee" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Organized client data, schedules and service workflows.</li></ul><p id="3fc74f1a-3164-80b0-a4af-fd540914f034" class="" dir="auto">
+</p><h3 id="89caed8f-a623-4ded-8e66-43538b310314" class="" dir="auto">Call Sales Representative, TeleTech Dumaguete</h3><p id="2d0c5108-1dda-4a6e-8228-d92711a61798" class="" dir="auto"><em>Nov 2017 – Jul 2018 · Weight Watchers account</em></p><ul id="3fc74f1a-3164-801e-8528-edc1459bd309" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Handled inbound calls for the Weight Watchers account, serving<br/>Humana clients enrolled in a weight loss program, combining tech<br/>support, customer care and sales in a single call.</li></ul><ul id="3fc74f1a-3164-8088-9a62-edbb27b75229" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Built rapport with customers, listened closely to their concerns and<br/>resolved issues on the first contact.</li></ul><ul id="3fc74f1a-3164-800c-bc20-f34c3d1aaa9d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Earned Top NPS (98.78%) and Top IR (99.52%) for Q1 2018 on Team<br/>Mikel, the account’s two KPIs, with awards signed by the Team<br/>Leader and Senior Manager</li></ul></div></div><hr id="b03efed3-2cc9-4c52-8628-03412de77cef" dir="auto"/><h1 id="3fd74f1a-3164-8091-bd65-ebeea3be34ed" class="" dir="auto">My TOOLS </h1><div id="3fd74f1a-3164-8041-8f2d-df9dca12b4b0" class="column-list" data-notion-column-list="" dir="auto"><div id="3fd74f1a-3164-809c-8041-c91bf0f6e2fb" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><div id="3fd74f1a-3164-80a4-afad-c10d3dcd25de" class="column-list" data-notion-column-list="" dir="auto"><div id="3fd74f1a-3164-8011-bb6e-e0d1f5fb8603" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><p id="3fd74f1a-3164-809f-8add-e5b47c19dfd3" class="" dir="auto">CLAUDE</p><figure id="3fd74f1a-3164-8078-ad70-c4d302cff483" class="image" data-notion-image="claude-ai-icon.webp" dir="ltr"><a href="claude-ai-icon.webp"><img style="width:96px" src="claude-ai-icon.webp"/></a></figure></div><div id="3fd74f1a-3164-80ed-8dce-c4257d4de01e" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><p id="3fd74f1a-3164-80fa-bcba-e2546b2fa1a9" class="" dir="auto">CHATGPT</p><figure id="3fd74f1a-3164-80ea-9431-ea1027c54fa9" class="image" data-notion-image="image%202.png" dir="ltr"><a href="image%202.png"><img style="width:96px" src="image%202.png"/></a></figure></div></div></div><div id="3fd74f1a-3164-8074-91c8-f8c3f4f618c7" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><div id="3fd74f1a-3164-8049-a3aa-e1697f975017" class="column-list" data-notion-column-list="" dir="auto"><div id="3fd74f1a-3164-8057-b640-e13ea28863cb" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><p id="3fd74f1a-3164-8001-b7d4-e063b0199a9c" class="" dir="auto">GEMINI</p><figure id="3fd74f1a-3164-80b8-84dc-f744ac795edb" class="image" data-notion-image="image%203.png" dir="ltr"><a href="image%203.png"><img style="width:96px" src="image%203.png"/></a></figure></div><div id="3fd74f1a-3164-8010-ba68-f3326feb3de9" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><p id="3fd74f1a-3164-807a-b4f4-c66f3536644a" class="" dir="auto">NOTEBOOK </p><figure id="3fd74f1a-3164-8091-aea3-e44593af9e9a" class="image" data-notion-image="image%204.png" dir="ltr"><a href="image%204.png"><img style="width:96px" src="image%204.png"/></a></figure></div></div></div><div id="3fd74f1a-3164-80a4-9517-ee31466b4541" style="width:99.99999999999999%" class="column" data-notion-column-ratio="0.9999999999999999" dir="auto"><div id="3fd74f1a-3164-8030-a277-ca1a84b08119" class="column-list" data-notion-column-list="" dir="auto"><div id="3fd74f1a-3164-804f-ba44-ea6d41292b7a" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><p id="3fd74f1a-3164-808e-a4f5-dccaf4f94776" class="" dir="auto">NOTION</p><figure id="3fd74f1a-3164-8062-8266-fd0df8faa75f" class="image" data-notion-image="image%205.png" dir="ltr"><a href="image%205.png"><img style="width:96px" src="image%205.png"/></a></figure><p id="3fd74f1a-3164-804a-9a37-f33ee5025b0f" class="" dir="auto">
+</p></div><div id="3fd74f1a-3164-80cd-a9f8-cb9430f8df59" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><p id="3fd74f1a-3164-80b8-9059-c88b8e85d627" class="" dir="auto">CLICK UP</p><figure id="3fd74f1a-3164-80e8-8c58-c67315adcc31" class="image" data-notion-image="image%206.png" dir="ltr"><a href="image%206.png"><img style="width:108px" src="image%206.png"/></a></figure></div></div></div><div id="3fd74f1a-3164-805d-8a24-e39b47d115b4" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><div id="3fd74f1a-3164-8039-a3a6-ec5bfdf32814" class="column-list" data-notion-column-list="" dir="auto"><div id="3fd74f1a-3164-80ad-888c-db77e2f8d010" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><p id="3fd74f1a-3164-80b4-8468-e75e97242d74" class="" dir="auto">ASANA</p><figure id="3fd74f1a-3164-8007-9343-f6f0d064084f" class="image" data-notion-image="image%207.png" dir="ltr"><a href="image%207.png"><img style="width:96px" src="image%207.png"/></a></figure></div><div id="3fd74f1a-3164-80cb-84b3-d1fb7a10a716" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><p id="3fd74f1a-3164-8028-a4d5-da3ae5a44a13" class="" dir="auto">ZOOM</p><figure id="3fd74f1a-3164-80d6-aadb-c64934d744b1" class="image" data-notion-image="image%208.png" dir="ltr"><a href="image%208.png"><img style="width:96px" src="image%208.png"/></a></figure></div></div></div><div id="3fd74f1a-3164-80e0-8c1f-c8b4d0047cdb" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><div id="3fd74f1a-3164-80f2-85d2-cdffac822363" class="column-list" data-notion-column-list="" dir="auto"><div id="3fd74f1a-3164-8080-b88d-cf3cafe61ac0" style="width:81.25%" class="column" data-notion-column-ratio="0.8125" dir="auto"><p id="3fd74f1a-3164-8062-96ba-c573e692fbd5" class="" dir="auto">MS TEAMS</p><figure id="3fd74f1a-3164-80ef-806f-d4331b3fb64d" class="image" data-notion-image="image%209.png" dir="ltr"><a href="image%209.png"><img style="width:84px" src="image%209.png"/></a></figure></div><div id="3fd74f1a-3164-80d7-80ce-c3fe52606a95" style="width:118.75%" class="column" data-notion-column-ratio="1.1875" dir="auto"><p id="3fd74f1a-3164-8095-b866-edaee7cf4672" class="" dir="auto">SLACK</p><figure id="3fd74f1a-3164-809d-9630-d043751aa0ca" class="image" data-notion-image="image%2010.png" dir="ltr"><a href="image%2010.png"><img style="width:96px" src="image%2010.png"/></a></figure><p id="3fd74f1a-3164-8098-aff2-fb933f568519" class="" dir="auto">
+</p></div></div></div></div><div id="3fd74f1a-3164-8035-9c5a-eecf94cdcd89" class="column-list" data-notion-column-list="" dir="auto"><div id="3fd74f1a-3164-803f-90b8-e66c04125b0b" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><div id="3fd74f1a-3164-8019-b071-f98de792b018" class="column-list" data-notion-column-list="" dir="auto"><div id="3fd74f1a-3164-8072-a49f-e7aa63c2a527" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><p id="3fd74f1a-3164-80fa-940c-d997d43f0468" class="" dir="auto">GA4 </p><figure id="3fd74f1a-3164-8008-9a0d-c34e74d7b67c" class="image" data-notion-image="image%2011.png" dir="ltr"><a href="image%2011.png"><img style="width:96px" src="image%2011.png"/></a></figure><p id="3fd74f1a-3164-805a-812f-c5cded843df4" class="" dir="auto">
+</p></div><div id="3fd74f1a-3164-80e2-8d91-c7a5e4a1e7c4" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><p id="3fd74f1a-3164-8054-ac4d-e70ec3b401b0" class="" dir="auto">GSC</p><figure id="3fd74f1a-3164-804a-acd7-c228d0478e42" class="image" data-notion-image="image%2012.png" dir="ltr"><a href="image%2012.png"><img style="width:96px" src="image%2012.png"/></a></figure></div></div></div><div id="3fd74f1a-3164-804f-ae1f-fae108bea6c0" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><div id="3fd74f1a-3164-80d9-9b1b-c090fcbaf4bc" class="column-list" data-notion-column-list="" dir="auto"><div id="3fd74f1a-3164-807e-a19c-d069daa524ec" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><p id="3fd74f1a-3164-80d0-86f6-d798bbde461b" class="" dir="auto">GTM</p><figure id="3fd74f1a-3164-803d-8864-f8a0388346db" class="image" data-notion-image="image%2013.png" dir="ltr"><a href="image%2013.png"><img style="width:96px" src="image%2013.png"/></a></figure></div><div id="3fd74f1a-3164-80e7-9b25-e127e86f1eff" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><p id="3fd74f1a-3164-805b-af5e-f8af8ed0d826" class="" dir="auto">GMC</p><figure id="3fd74f1a-3164-809d-a5ee-eb1c95ee9430" class="image" data-notion-image="image%2014.png" dir="ltr"><a href="image%2014.png"><img style="width:96px" src="image%2014.png"/></a></figure><p id="3fd74f1a-3164-80f7-a864-ea1b6eaa9983" class="" dir="auto">
+</p></div></div><p id="3fd74f1a-3164-80f9-bcad-f2db3e981982" class="" dir="auto">
+</p></div><div id="3fd74f1a-3164-801d-bdfc-fe8b57321d7d" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><div id="3fd74f1a-3164-80cf-b6c4-dfae7f3c686c" class="column-list" data-notion-column-list="" dir="auto"><div id="3fd74f1a-3164-8048-90b3-c2a242fd514b" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><p id="3fd74f1a-3164-8052-9c85-d901e4b6c541" class="" dir="auto">LOOKER</p><figure id="3fd74f1a-3164-801e-82a8-d631576ea020" class="image" data-notion-image="image%2015.png" dir="ltr"><a href="image%2015.png"><img style="width:96px" src="image%2015.png"/></a></figure></div><div id="3fd74f1a-3164-800a-9fcd-e1717911deaa" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><p id="3fd74f1a-3164-80a1-a754-f4636d4efdcf" class="" dir="auto">SHEETS</p><figure id="3fd74f1a-3164-80bd-b4c9-e55b0f0402f5" class="image" data-notion-image="image%2016.png" dir="ltr"><a href="image%2016.png"><img style="width:96px" src="image%2016.png"/></a></figure><p id="3fd74f1a-3164-80da-a13f-c1f5412278ed" class="" dir="auto">
+</p></div></div><p id="3fd74f1a-3164-807c-b064-d0173f491d46" class="" dir="auto">
+</p></div><div id="3fd74f1a-3164-80aa-be07-f843cd9b27f3" style="width:99.99999999999999%" class="column" data-notion-column-ratio="0.9999999999999999" dir="auto"><div id="3fd74f1a-3164-8061-b0fc-fac3cccecb73" class="column-list" data-notion-column-list="" dir="auto"><div id="3fd74f1a-3164-805b-aaa0-eb6eb73104da" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><p id="3fd74f1a-3164-80e0-bc66-e0aa33203318" class="" dir="auto">ADWORDS</p><figure id="3fd74f1a-3164-8090-843a-dd01a744b415" class="image" data-notion-image="image%2017.png" dir="ltr"><a href="image%2017.png"><img style="width:96px" src="image%2017.png"/></a></figure><p id="3fd74f1a-3164-8032-911c-e4029fb96e8a" class="" dir="auto">
+</p></div><div id="3fd74f1a-3164-808a-9643-d0e707e558c1" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><p id="3fd74f1a-3164-807d-9936-f10c6cafec16" class="" dir="auto">BING</p><figure id="3fd74f1a-3164-80c4-8a84-e8099914dfc9" class="image" data-notion-image="image%2018.png" dir="ltr"><a href="image%2018.png"><img style="width:72px" src="image%2018.png"/></a></figure><p id="3fd74f1a-3164-80bc-9192-fdd95bee8d76" class="" dir="auto">
+</p></div></div><p id="3fd74f1a-3164-8098-8334-c742c40e9373" class="" dir="auto">
+</p></div><div id="3fd74f1a-3164-8084-8b51-c07bb3e1b6b9" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><div id="3fd74f1a-3164-80bb-ac55-d78e15446ee1" class="column-list" data-notion-column-list="" dir="auto"><div id="3fd74f1a-3164-80a7-a705-cddfe7d276d6" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><p id="3fd74f1a-3164-80b0-9729-c24a8b613bf2" class="" dir="auto">OUTLOOK</p><figure id="3fd74f1a-3164-8029-9d8f-e3d38f1663f8" class="image" data-notion-image="image%2019.png" dir="ltr"><a href="image%2019.png"><img style="width:96px" src="image%2019.png"/></a></figure><p id="3fd74f1a-3164-8049-9ed9-e2d04168c62d" class="" dir="auto">
+</p></div><div id="3fd74f1a-3164-80e1-adc2-da4af6cea2b1" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><p id="3fd74f1a-3164-807f-9add-c9018a197ae2" class="" dir="auto">GMAIL</p><figure id="3fd74f1a-3164-80a3-b431-f3ec591fd4dd" class="image" data-notion-image="image%2020.png" dir="ltr"><a href="image%2020.png"><img style="width:3840px" src="image%2020.png"/></a></figure></div></div></div></div><h2 id="3415e0b3-0e8b-4daf-9a6b-794d95e969d8" class="" dir="auto">My Stack</h2><div id="9e37bb0a-a047-4b9a-808c-27bdf4600ce9" class="column-list" data-notion-column-list="" dir="auto"><div id="8985dedc-18f1-4696-bd53-821afb6a2a88" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="🎯" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="a6ba1fde-44a8-4449-ae4a-0ca4f1884ce9" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="🎯"></span></div><div style="width:100%"><p id="c57c4000-bdec-4e68-b3f7-7b24109bb0fb" class="" dir="auto"><strong>Paid media</strong></p><ul id="14be7099-4dca-4033-a9ee-863f989f2565" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Campaign structuring (Search &amp; Shopping)</li></ul><ul id="36604651-e80b-47e7-ba60-df900e29f8be" class="bulleted-list" dir="auto"><li style="list-style-type:disc">CPC control &amp; cost-efficiency optimization</li></ul><ul id="3ea639c2-81d0-4cd5-8f77-ab9602374b45" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Search term filtering &amp; negative keyword strategy</li></ul><ul id="dc87e6d6-d310-4bb8-b499-68e88a44f460" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Product feed optimization (Google Merchant Center)</li></ul><ul id="18b5dd8f-7188-43e9-b88e-5c7679de2a91" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Traffic quality optimization (intent filtering)</li></ul></div></aside><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="📡" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="f1f470d3-2e36-4f14-abb2-2c2e5e6e460d" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="📡"></span></div><div style="width:100%"><p id="a20c7256-8d3d-41d0-9101-d295c6cedb97" class="" dir="auto"><strong>Tracking &amp; analysis</strong></p><ul id="5a4b8ade-013e-474a-90b2-366ed36defc3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Cross-domain tracking implementation</li></ul><ul id="3f6eab85-4082-4f52-9db4-e8776bb34c3a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Multi-channel attribution analysis</li></ul><ul id="3d08ef61-ba3e-4ce6-b874-38a844b4f432" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Data interpretation &amp; performance analysis</li></ul></div></aside></div><div id="09daaab7-fce5-4dd7-9d1e-aee4e285f2b3" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="🔍" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="f71b492c-fb54-44e4-8c9c-0579a3ff009c" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="🔍"></span></div><div style="width:100%"><p id="10069241-9bd6-439b-8ca9-1de01ad0d2b9" class="" dir="auto"><strong>SEO</strong></p><ul id="d84d47e9-d810-4192-8ec2-4e1428545e67" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Keyword research &amp; search intent analysis</li></ul><ul id="ebf957a4-2b2c-4b65-87ba-f436fc768785" class="bulleted-list" dir="auto"><li style="list-style-type:disc">On-page SEO (titles, meta, content alignment)</li></ul><ul id="510a3b90-ac75-43b6-b935-c5bfaefe7f91" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Technical SEO (indexing, sitemap, crawl optimization)</li></ul><ul id="72ae86cc-1112-4958-a25a-e4ef1301c81a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Search query analysis (GSC + paid data)</li></ul></div></aside><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="🧲" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="f7626a41-c344-4c1c-ad11-53fa75068307" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="🧲"></span></div><div style="width:100%"><p id="313f0804-2678-45c4-afc7-3eef4fe29a03" class="" dir="auto"><strong>Conversion</strong></p><ul id="894f6965-d7f4-4889-b271-1c95b5aef57b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Conversion rate optimization (CVR improvement)</li></ul><ul id="9f0ac981-3396-4cfe-a422-5fe1db419593" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Landing page optimization (UX + relevance)</li></ul><ul id="4b78a90e-d193-4b9b-bfe7-8d7d5609c6f0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Funnel analysis (awareness → conversion)</li></ul></div></aside></div></div><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="🧰" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="58cfefab-4302-4d9f-a00c-7d795aeeb15c" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="🧰"></span></div><div style="width:100%"><p id="e79c9d08-cc3c-4ba2-8e4f-61f95ad730ac" class="" dir="auto"><strong>Tools:</strong> GA4, GTM, Search Console, Looker Studio, Google Ads, Microsoft Ads, Meta, TikTok, Shopify, GoHighLevel, WordPress, Canva, Notion, Airtable, Asana, ClickUp</p><p id="474d3510-7b06-46fe-9b61-d81f086e454e" class="" dir="auto"><em>Currently learning: Make (AI automation for social media marketing)</em></p></div></aside><hr id="34569420-e15d-4ac7-8b7b-8c323fa784c3" dir="auto"/><h2 id="2b5e21b0-8d1b-4534-97e1-460ae5c51167" class="" dir="auto">Certifications &amp; awards</h2><div id="9b663e3b-8113-4259-80f1-3e23306851d4" class="column-list" data-notion-column-list="" dir="auto"><div id="19e5a830-1f94-4652-a3c1-918d42da256c" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="🎓" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="80050777-b3c0-4c2f-a238-0832d512b28a" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="🎓"></span></div><div style="width:100%"><p id="d1090854-bb2f-45db-a5fa-926776c06252" class="" dir="auto"><strong>Certifications</strong></p><ul id="917df266-e3b9-42f6-a7be-bf29e401cc05" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Google Analytics 4 (GA4), Google Skillshop</li></ul><ul id="42cb2767-6320-4a76-a41e-bf61601e9f99" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Google Ads Search, Google Skillshop</li></ul><ul id="1ba4e16b-b0cf-404b-a898-a5fea82b9409" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Google Ads Shopping, Google Skillshop</li></ul><ul id="05e392bc-c2af-461e-a1b8-5c15f7dfe7eb" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Google Tag Manager Fundamentals, Google / Analytics Academy</li></ul></div></aside></div><div id="3bc60be8-a5ee-4422-aba9-8625c4cbbfc9" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="🏆" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="3c7fccfa-bd9b-4193-bbbd-fef046991590" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="🏆"></span></div><div style="width:100%"><p id="e1f5bda1-ebfa-443d-b468-0102e342f50f" class="" dir="auto"><strong>Awards</strong></p><p id="9a8b2eae-9034-4f82-a797-2140629566e5" class="" dir="auto"><strong>Top NPS (98.78%)</strong> and <strong>Top IR (99.52%)</strong>, Q1 2018, TeleTech Dumaguete (Weight Watchers account)</p></div></aside></div></div><hr id="f195c612-63a8-48f9-97dc-4c8afef7da6b" dir="auto"/><h2 id="758e44c2-35b8-4ba6-8388-c824d4735a19" class="" dir="auto">Recommendations</h2><div id="e2600bd8-712d-491a-97bb-aad3415f749e" class="column-list" data-notion-column-list="" dir="auto"><div id="110de934-c31e-4972-a117-0c38117ced01" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><blockquote id="d98a8238-20b2-45aa-a41e-1ea6bb0eda80" class="" dir="auto"><em>One of Clen&#x27;s strengths is his ability to connect different parts of marketing — from SEO to paid ads to tracking. He understands how everything works together, and that allows him to make smarter decisions. He&#x27;s not just executing tasks, he&#x27;s thinking about the bigger picture.</em></blockquote><blockquote id="04e06bed-2253-4453-8995-41b81b395a49" class="" dir="auto"></blockquote><blockquote id="363a5612-88de-4e08-8679-09d45f8a16e8" class="" dir="auto">Kevin Lin</blockquote></div><div id="7ceee01f-2acf-48b6-9113-8c072e33a038" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><blockquote id="eca72058-089c-4d9f-a6dc-ed87985c7727" class="" dir="auto"><em>Clen is reliable and focused, especially when it comes to hitting performance targets. He pays attention to details that others might overlook, particularly in campaign setup and optimization. His work shows a clear understanding of how to improve both traffic quality and efficiency.</em></blockquote><blockquote id="50391d14-4afd-478a-a875-2476df604a9c" class="" dir="auto"></blockquote><blockquote id="6f99bbce-0a36-4a65-ba45-f66eac23a666" class="" dir="auto"><strong>Venice Villaruz</strong></blockquote></div></div><hr id="61d5e973-d641-4583-87a0-fadea0e7fb00" dir="auto"/><div id="3fc74f1a-3164-801b-8838-fe1f62c74062" class="column-list" data-notion-column-list="" dir="auto"><div id="3fc74f1a-3164-8041-ba2c-f4d7db41092a" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><h2 id="13c224b9-80e8-4a33-ab57-a545a675e5ef" class="" dir="auto">Education</h2><div id="3fc74f1a-3164-8058-803b-c9f2f492afc5" class="column-list" data-notion-column-list="" dir="auto"><div id="3fc74f1a-3164-8099-b095-c633d91479ad" style="width:37.5%" class="column" data-notion-column-ratio="0.375" dir="auto"><figure id="71074f1a-3164-8383-a8fe-81f46a1c1b35" class="image" data-notion-image="b0b9b6fe-52a7-43ee-9756-d639f7fbbbdc.png" dir="ltr"><a href="b0b9b6fe-52a7-43ee-9756-d639f7fbbbdc.png"><img style="width:84px" src="b0b9b6fe-52a7-43ee-9756-d639f7fbbbdc.png"/></a></figure><p id="3fc74f1a-3164-80d9-81d9-e8f33c65cfc3" class="" dir="auto">
+</p></div><div id="3fc74f1a-3164-80c5-a751-e1986c7cdeec" style="width:112.5%" class="column" data-notion-column-ratio="1.125" dir="auto"><h1 id="3fc74f1a-3164-80f5-aded-ed103036c1f2" class="" dir="auto"><strong>Silliman University</strong></h1><p id="3fc74f1a-3164-8034-9c2e-e531f780ecbf" class="" dir="auto">Bachelor of Business Administration, major in Management</p><p id="3fc74f1a-3164-80a3-8e25-f007187d2258" class="" dir="auto">2015 – 2019</p><p id="3fc74f1a-3164-80eb-8dec-ca6c8a26c469" class="" dir="auto">
+</p></div></div></div><div id="3fc74f1a-3164-8061-a080-e4a228f19e77" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><p id="3fc74f1a-3164-80b4-90f3-f8e19e8d8542" class="" dir="auto">
+</p><figure id="3fc74f1a-3164-8041-9575-d87919257990" dir="ltr"><a href="https://www.facebook.com/clenguzarem.va" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Clen Guzarem Marketing VA: SEO, Paid Ads &amp; Landing Pages</div><div class="bookmark-description">Clen Guzarem Marketing VA: SEO, Paid Ads &amp; Landing Pages, Santander. 774 followers · 22 talking about this. Virtual marketing assistant | SEO &amp; paid media | GA4 &amp; GTM | GoHighLevel landing pages</div></div><div class="bookmark-href"><img src="https://static.xx.fbcdn.net/rsrc.php/y1/r/ay1hV6OlegS.ico" class="icon bookmark-icon"/>https://www.facebook.com/clenguzarem.va</div></div><img src="https://scontent-iad3-2.xx.fbcdn.net/v/t39.30808-1/847908251_122217177074475165_8805367248428950152_n.jpg?stp=dst-jpg_tt6&amp;cstp=mx800x800&amp;ctp=s720x720&amp;_nc_cat=111&amp;ccb=1-7&amp;_nc_sid=3ab345&amp;_nc_ohc=GS58kdF0w6UQ7kNvwH2vq_e&amp;_nc_oc=Ado8I9KG0kgQHwHAQWXi35fIfqTrckOtuYxUU-MZoUhyjxvUMmu8kho0r_i-CmSdUVSSGc__e_R7JK2uiQY2hT3X&amp;_nc_zt=24&amp;_nc_ht=scontent-iad3-2.xx&amp;_nc_gid=Wx3bdvrd0K0vkhR3uWqDFw&amp;_nc_ss=7c20f&amp;oh=00_AQOrpfluTdKu5epUmFdwvwbBJxuZWy6oc97sFyxelFn0vg&amp;oe=6AD9BB4E" class="bookmark-image"/></a></figure></div></div><hr id="159eed37-bc64-4b42-9eee-3c4915595d35" dir="auto"/><hr id="8f46c670-4e5a-4042-8604-7a8ad5d99481" dir="auto"/><div id="3fc74f1a-3164-8081-99d1-c31b4577ebb7" class="column-list" data-notion-column-list="" dir="auto"><div id="3fc74f1a-3164-802a-90e3-df907ccd881d" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><h2 id="3fc74f1a-3164-809f-90cd-df80eaf58ddd" class="" dir="auto">How we&#x27;d work together</h2><ol type="1" id="3fc74f1a-3164-8055-8953-f0eeea34aaf2" class="numbered-list" start="1" dir="auto"><li><strong>Intro call:</strong> goals, current setup, access needed.</li></ol><ol type="1" id="3fc74f1a-3164-80d9-ae5f-c6c1fe70c514" class="numbered-list" start="2" dir="auto"><li><strong>Quick audit:</strong> tracking, campaigns or site, with the top fixes ranked.</li></ol><ol type="1" id="3fc74f1a-3164-800a-b76b-cdb1898dd07d" class="numbered-list" start="3" dir="auto"><li><strong>Set up and run:</strong> agreed scope, weekly updates.</li></ol><ol type="1" id="3fc74f1a-3164-8028-9dd0-febc6385feaf" class="numbered-list" start="4" dir="auto"><li><strong>Report:</strong> a plain-language summary of what moved and what&#x27;s next</li></ol></div><div id="3fc74f1a-3164-800f-a9d4-c2be4a286d60" style="width:100%" class="column" data-notion-column-ratio="1" dir="auto"><h2 id="3fc74f1a-3164-80bc-beda-cbd54dd15d25" class="" dir="auto">FAQ</h2><details id="3fc74f1a-3164-80c9-aba2-e97b7dfbb273" open="" class="toggle" dir="auto"><summary>What time zone do you work in?</summary><div class="indented"><p id="3fc74f1a-3164-8079-8e12-f2d99b8f3776" class="" dir="auto">Philippine Time (UTC+8).</p></div></details><details id="3fc74f1a-3164-8059-85f7-c03d040800e9" open="" class="toggle" dir="auto"><summary>Which tools do you need access to?</summary><div class="indented"><p id="3fc74f1a-3164-801a-a475-f03a59fb1c6b" class="" dir="auto">Typically ad accounts, GA4, GTM and Search Console, shared with view or manager roles, never passwords.</p></div></details><details id="3fc74f1a-3164-806a-ba70-edf0e4367bf2" open="" class="toggle" dir="auto"><summary>How do I get started?</summary><div class="indented"><p id="3fc74f1a-3164-8096-b64e-c2efed8dbc84" class="" dir="auto">Send a short note on what you need and I&#x27;ll reply with next steps.</p></div></details></div></div><hr id="b153c6ce-49c1-4fd4-ba94-21c128c67bb9" dir="auto"/><aside class="block-color-blue_background callout" data-notion-callout="" data-notion-callout-icon="🤝" data-notion-callout-background="blue_background" style="white-space:pre-wrap;display:flex" id="b6bbb867-dc46-4055-afa8-2652bfde08d2" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="🤝"></span></div><div style="width:100%"><p id="329748fc-3755-4643-a7b1-a3564bedf83f" class="" dir="auto"><strong>Let&#x27;s turn traffic into results.</strong></p><p id="4d427a6f-7d19-4efb-9764-c2ad99057c20" class="" dir="auto">If you&#x27;re looking for someone who can control acquisition cost, improve traffic quality and keep tracking accurate across your funnel, let&#x27;s connect.</p><p id="b272d9dd-55b9-44dd-b03b-84ddf0e2cf39" class="" dir="auto"><a href="mailto:clenthonguzarem29@gmail.com">Email me</a> · <a href="https://wa.me/639368447153">WhatsApp</a> · <a href="https://www.linkedin.com/in/clen-thon-guzarem-9a2ab6338">LinkedIn</a></p></div></aside></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
